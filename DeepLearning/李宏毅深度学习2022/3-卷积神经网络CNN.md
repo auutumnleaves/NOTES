@@ -20,7 +20,7 @@
 
 这个dimension的长度，就决定了你现在这个模型可以辨识出多少种类的东西。比如你的向量长度是2000，就代表说你这个模型可以辨识出2000种不同的东西。——如果你想让你的模型能识别上万种东西，那你的label的维度就应该是上万的。
 
-![](assets/1-卷积神经网络CNN/file-20241127184403302.png)
+![](assets/3-卷积神经网络CNN/file-20241127184403302.png)
 
 模型实际的运行结果是一个$y'$，它和$\hat y$之间是有差距的（Cross entropy），这些都是之前讲过的理论。
 
@@ -34,7 +34,7 @@
 
 接下来，我们就要把这个三维的Tensor给它拉直。把它拉直以后，就可以丢到一个network里面去了。
 
-![](assets/1-卷积神经网络CNN/file-20241127184417832.png)
+![](assets/3-卷积神经网络CNN/file-20241127184417832.png)
 
 要理解一件事情：到目前为止，我们的network所接收的输入，其实就是一个向量。——所以，只要我们能够把一张图片变成一个向量，我们就可以把它当做是network的输入。
 
@@ -54,7 +54,7 @@
 
 每一个neuron，它和输入向量的每一个数值之间都会有一个weight。所以，如果有`100*100*3`个输入数值，有`1000`个neuron，那么就会有`1000 * 100 * 100 * 3`个weight。也就是$3*10^7$个，是一个非常巨大的数目。
 
-![](assets/1-卷积神经网络CNN/file-20241127184430457.png)
+![](assets/3-卷积神经网络CNN/file-20241127184430457.png)
 
 参数多，会有什么样的问题呢？
 
@@ -72,15 +72,15 @@
 
 也许对一个影像辨识的系统而言，对一个影像辨识的neuron，对一个影像辨识的类神经网络里面的神经元而言，它要做的就是侦测，侦测这张图片里面有没有出现一些特别重要的pattern，而这些pattern是代表了某种物件的。
 
-![](assets/1-卷积神经网络CNN/file-20241127184443009.png)
+![](assets/3-卷积神经网络CNN/file-20241127184443009.png)
 
 举例来说，如果现在有某个neuron说，他看到鸟嘴这个pattern；有某个neuron又说，他看到眼睛这个pattern；有某个neuron说，他看到鸟爪这个pattern……。也许，看到这些pattern，综合起来就代表说我们看到了一只鸟。——类神经网络就可以告诉你说，因为看到了这些pattern，所以他看到了一只鸟。
 
-![](assets/1-卷积神经网络CNN/file-20241127184457340.png)
+![](assets/3-卷积神经网络CNN/file-20241127184457340.png)
 
 也许你会觉得，看pattern，然后决定它是什么……这件事好像没有那么聪明。但仔细想想，人是不是也是用同样的方法来看一张图片中有没有一只鸟呢？
 
-![](assets/1-卷积神经网络CNN/file-20241127184507429.png)
+![](assets/3-卷积神经网络CNN/file-20241127184507429.png)
 
 就算是人，在判断一个图片是什么物件的时候，往往也是抓最主要的特征，在看到这些特征以后，很直觉地就说，你看到了某种物件。——那么，对机器来说，也许这也是一个有效地判断影像中有什么物件的方法。
 
@@ -88,7 +88,7 @@
 
 但是，假设我们现在要让neuron做的事情，是判断说现在有没有某种pattern出现，那也许我们并不需要每一个neuron都去看一张完整的图片。——因为这些重要的pattern，比如说眼睛、鸟嘴、鸟爪……并不需要看整张完整的图片才能够得到这些资讯。——比如判断有没有鸟嘴，只需要把红框那一部分图片给一个neuron看一下就行了，而不需要把整张图片都让他看。
 
-![](assets/1-卷积神经网络CNN/file-20241127184517131.png)
+![](assets/3-卷积神经网络CNN/file-20241127184517131.png)
 
 所以，这些neuron也许根本就不需要把整张图片当做输入，他们只需要把图片的一小部分当做输入，就足以让他们侦测某些特别关键的pattern有没有出现。
 
@@ -114,7 +114,7 @@
 
 再把这个27维的向量作为这个neuron的输入，这个neuron会给27维向量的每一个dimension一个weight，最终再附带加上一个bias，即可输出，送往下一层neuron当做输入。
 
-![](assets/1-卷积神经网络CNN/file-20241127190329643.png)
+![](assets/3-卷积神经网络CNN/file-20241127190329643.png)
 
 ---
 
@@ -122,17 +122,17 @@
 
 你可以说：这边有一个蓝色的neuron，它是看左上角这个`3*3*3`的范围；这边有一个黄色的neuron，它是看右下角这个`3*3*3`的范围。
 
-![](assets/1-卷积神经网络CNN/file-20241127190459565.png)
+![](assets/3-卷积神经网络CNN/file-20241127190459565.png)
 
 而receptive field彼此之间也可以是重叠的。
 
 比如现在画一个receptive field在图上这个地方，它是绿色neuron的守备范围，且它跟蓝色的、黄色的都有一些重叠的空间。——这样也是可以的。
 
-![](assets/1-卷积神经网络CNN/file-20241127190612069.png)
+![](assets/3-卷积神经网络CNN/file-20241127190612069.png)
 
 甚至图中同一块receptive field可以有多个不同的neuron来守备它。
 
-![](assets/1-卷积神经网络CNN/file-20241127190703907.png)
+![](assets/3-卷积神经网络CNN/file-20241127190703907.png)
 
 ---
 此时可能你会有一些问题：
@@ -172,7 +172,7 @@
 
 你画一个receptive field之后，不会只有一个neuron去关照它、去守备它，往往会有一组、一排neuron去守备它。比如说会有64个，或有128个neuron，去守备一个receptive field的范围。
 
-![](assets/1-卷积神经网络CNN/file-20241127192359016.png)
+![](assets/3-卷积神经网络CNN/file-20241127192359016.png)
 
 **4.把左上角的这个receptive field往右移一点，就制造了一个新的receptive field**
 
@@ -181,7 +181,7 @@ stride是你自己决定的一个参数，一个hyperparameter，你要自己调
 stride往往不会设太大，往往设1或2就可以了。因为你希望各个receptive field之间是有重叠的。
 为什么你希望各个receptive field之间是有重叠的呢？——因为，假设各个receptive field完全没有重叠，那么假如有一个pattern就正好出现在两个receptive field的交界上面，那就没有任何neuron去侦测它了，那你可能就会miss掉这个pattern。——所以我们希望各个receptive field之间有高度的重叠。
 
-![](assets/1-卷积神经网络CNN/file-20241127193124453.png)
+![](assets/3-卷积神经网络CNN/file-20241127193124453.png)
 
 但是，在上例中，对于第三个receptive field，出现了一个问题：它超出了影像的范围。
 
@@ -193,7 +193,7 @@ padding就是补值的意思。所以，当你的receptive field有一部分超�
 
 按照上述方式，扫过整张图片。所以，图片上每一个格子都是有被一个receptive field覆盖的，也就是每一个格子都有一群neuron在侦测那个地方有没有出现某些pattern。
 
-![](assets/1-卷积神经网络CNN/file-20241127193809010.png)
+![](assets/3-卷积神经网络CNN/file-20241127193809010.png)
 
 上述内容，就是第一种简化“Fully Connected”的方式。
 
@@ -209,7 +209,7 @@ padding就是补值的意思。所以，当你的receptive field有一部分超�
 
 比如，一张图片的鸟嘴是在中间的，那么没关系，它肯定对应于中间的一组neuron，而这一组neuron当中，如果有一个neuron的用来侦测鸟嘴的话，这个鸟嘴就会被侦测出来。
 
-![](assets/1-卷积神经网络CNN/file-20241127194448886.png)
+![](assets/3-卷积神经网络CNN/file-20241127194448886.png)
 
 现在的问题似乎出现了：“左上角的一组neuron中，某个侦测鸟嘴的neuron”与“中间的一组neuron中，某个侦测鸟嘴的neuron”，它们做的事情其实是一样的。只是它们的守备范围不一样。
 
@@ -217,13 +217,13 @@ padding就是补值的意思。所以，当你的receptive field有一部分超�
 
 ### （四）Simplification 2
 
-![](assets/1-卷积神经网络CNN/file-20241127194743479.png)
+![](assets/3-卷积神经网络CNN/file-20241127194743479.png)
 
 概括一下这个问题，就是，我们能不能让不同receptive field的neuron之间共享参数。
 
 所谓的共享参数，就是说这两个neuron的各个参数是完全一样的。
 
-![](assets/1-卷积神经网络CNN/file-20241127195044939.png)
+![](assets/3-卷积神经网络CNN/file-20241127195044939.png)
 
 在上图中，对两个neuron的weight用相同颜色的线，来表示它们的weight的确是相等的。
 
@@ -243,13 +243,13 @@ padding就是补值的意思。所以，当你的receptive field有一部分超�
 
 它们彼此之间怎么共享参数呢？（图中我们用一样的颜色代表两个neuron共享一样的参数）
 
-![](assets/1-卷积神经网络CNN/file-20241127195905993.png)
+![](assets/3-卷积神经网络CNN/file-20241127195905993.png)
 
 左边的第一个neuron，和右边的第一个neuron共用参数；左边的第二个neuron，和右边的第二个neuron共用参数，左边的第三个neuron，和右边的第三个neuron共用参数……
 
 每一个receptive field都只有一组参数，这些参数有一个名字叫做filter。所以，这两个neuron共用同一组参数，这组参数就叫做filter 1；另外两个neuron共用的一组参数就叫做filter 2，……
 
-![](assets/1-卷积神经网络CNN/file-20241127200212399.png)
+![](assets/3-卷积神经网络CNN/file-20241127200212399.png)
 
 ### （五）总结Benefit of Convolutional Layer
 
@@ -275,7 +275,7 @@ Receptive Field，加上Parameter Sharing，就是Convolutional Layer。
 
 有用Convolutional Layer的Network，就叫“Convolutional Neural Network”。
 
-![](assets/1-卷积神经网络CNN/file-20241127200930880.png)
+![](assets/3-卷积神经网络CNN/file-20241127200930880.png)
 
 
 ## 二、另一种介绍CNN的方式
@@ -288,7 +288,7 @@ Convolutional Layer就是里面有很多的Filter。这些Filter，它们的大�
 
 而每一个Filter的作用，就是要去图片里面抓取某个pattern。（当然，这个pattern得是在`3*3`的范围内，才能被filter抓出来了）
 
-![](assets/1-卷积神经网络CNN/file-20241127203557018.png)
+![](assets/3-卷积神经网络CNN/file-20241127203557018.png)
 
 那么，对于某一个Filter，它是怎么去图片里面把pattern抓出来的呢？
 
@@ -298,7 +298,7 @@ Convolutional Layer就是里面有很多的Filter。这些Filter，它们的大�
 
 我们现在重点是想看看，一个已经找好的Filter，它是怎样在图片上面进行运作，从而把pattern侦测出来的。
 
-![](assets/1-卷积神经网络CNN/file-20241127203954258.png)
+![](assets/3-卷积神经网络CNN/file-20241127203954258.png)
 
 拿Filter对原图片进行步长为1的卷积操作，得到一系列结果。
 
@@ -306,11 +306,11 @@ Convolutional Layer就是里面有很多的Filter。这些Filter，它们的大�
 
 注意，观察这个Filter，可以发现它的特点是“对角线的地方都是1，其他地方都是-1”，这就会导致一个效果，即，它在扫描原图的过程中，如果原图片出现“对角线的地方都是1，其他地方都是0”的时候，卷积的结果最大。
 
-![](assets/1-卷积神经网络CNN/file-20241127204235996.png)
+![](assets/3-卷积神经网络CNN/file-20241127204235996.png)
 
 所以，根据卷积的结果来看，我们就知道，这张图片左上角和左下角的地方，出现了这种pattern，即“对角线是三个1，其他地方均为0”的pattern。
 
-![](assets/1-卷积神经网络CNN/file-20241127204354036.png)
+![](assets/3-卷积神经网络CNN/file-20241127204354036.png)
 
 对于Filter 2来说，它的特点可能是“中间竖着的部分全是1”，同样拿它把原图扫描一遍，得到一系列结果。
 
@@ -320,11 +320,11 @@ Convolutional Layer就是里面有很多的Filter。这些Filter，它们的大�
 
 那么，如果有64个Filter，我们就得到64群数字。——这群数字，它又有个名字，叫做**Feature Map**。
 
-![](assets/1-卷积神经网络CNN/file-20241127204544656.png)
+![](assets/3-卷积神经网络CNN/file-20241127204544656.png)
 
 所以，当我们拿一张图片，经过一个Convolutional Layer，且这个Convolutional Layer里面有64个Filter，我们就产生出来一个Feature Map，这个Feature Map里面就有64组数字。并且，在这个例子当中，Feature Map中的每一组数字都是`4*4`的大小。
 
-![](assets/1-卷积神经网络CNN/file-20241127204810734.png)
+![](assets/3-卷积神经网络CNN/file-20241127204810734.png)
 
 这个Feature Map可以看作一张图片，只不过这个图片的channels不是RGB，而是有64个channels，且每一个channel对应一个Filter。
 
@@ -336,7 +336,7 @@ Convolutional Layer就是里面有很多的Filter。这些Filter，它们的大�
 
 对于第二层的Convolutional Layer，它其中也有一堆的Filter。对于每一个Filter而言，它的宽高设成`3*3`，而它的深度，必须设为64。因为Filter的深度就对应于它要处理的图片的channels。
 
-![](assets/1-卷积神经网络CNN/file-20241127205316383.png)
+![](assets/3-卷积神经网络CNN/file-20241127205316383.png)
 
 总结一下就是，对于第一层Layer而言，它的输入是原图片，若原图片是黑白，则Filter的channels为1即可；若原图片是彩色，则Filter的channels为3即可。
 
@@ -348,7 +348,7 @@ Convolutional Layer就是里面有很多的Filter。这些Filter，它们的大�
 
 拿前两层的Convolutional Layer举例，如下图所示：
 
-![](assets/1-卷积神经网络CNN/file-20241127205747682.png)
+![](assets/3-卷积神经网络CNN/file-20241127205747682.png)
 
 对于第二层Convolutional Layer，它是在第一层Convolutional Layer输出结果的基础上继续用Filter去做卷积操作的。
 
@@ -356,7 +356,7 @@ Convolutional Layer就是里面有很多的Filter。这些Filter，它们的大�
 
 所以，当我们看到第一层Convolutional Layer输出出来的Feature Map的`3*3`范围的时候，我们其实是相当于在原图像上考虑了一个`5*5`的范围。
 
-![](assets/1-卷积神经网络CNN/file-20241127210127917.png)
+![](assets/3-卷积神经网络CNN/file-20241127210127917.png)
 
 所以，随着你的Network叠的越来越深，虽然是同样`3*3`大小的Filter，但它实际在原图像上看的范围是越来越大的。——所以，Network够深，你就不用怕你侦测不到比较大的pattern。
 
@@ -368,16 +368,16 @@ Convolutional Layer就是里面有很多的Filter。这些Filter，它们的大�
 
 在“故事一”中讲到，有一些neuron会共用参数，这些共用的参数，就是“故事二”里面的Filter。——我们“故事一”中提到的参数是一个很长的向量（如`3*3*3`长度的），它就对应于“故事二”中Filter的尺寸（如`3*3*3`的Tensor）。
 
-![](assets/1-卷积神经网络CNN/file-20241127210630482.png)
+![](assets/3-卷积神经网络CNN/file-20241127210630482.png)
 
 （注意上图的一个细节，向量连接的weight箭头是不同颜色的，它对应于Filter的Tensor中对应颜色圈出来的数据）
 
-![](assets/1-卷积神经网络CNN/file-20241127210852590.png)
+![](assets/3-卷积神经网络CNN/file-20241127210852590.png)
 
 在故事一中，我们说到，不同的neuron之间会share它们的weight参数，并守备不同的范围。——什么叫共享weight参数，就是使用同一个Filter呗。——什么叫守备不同的范围，就是拿着Filter去扫描这个范围内的图片呗。
 
 
-![](assets/1-卷积神经网络CNN/file-20241127211342389.png)
+![](assets/3-卷积神经网络CNN/file-20241127211342389.png)
 
 
 ## 四、补充
@@ -390,7 +390,7 @@ pooling是怎么来的呢？
 
 我们把一张比较大的图片做subsampling，举例来说，你把偶数的column都拿掉，奇数的row都拿掉，图片变为原来的1/4，但是不会影响图片呈现的内容。把大的图片缩小，但缩小后的图片仍然看起来和原始图片没什么不同。
 
-![](assets/1-卷积神经网络CNN/file-20241127211730549.png)
+![](assets/3-卷积神经网络CNN/file-20241127211730549.png)
 
 #### Pooling —— Max Pooling
 
@@ -406,11 +406,11 @@ Max Pooling是怎么运作的呢？
 
 要做pooling的时候，我们就把这些数字，几个几个一组。比如在这个例子里面，就是`2*2`的为一组。
 
-![](assets/1-卷积神经网络CNN/file-20241127223218698.png)
+![](assets/3-卷积神经网络CNN/file-20241127223218698.png)
 
 在Max Pooling里面，我们选的代表，就是每组中最大的那一个。
 
-![](assets/1-卷积神经网络CNN/file-20241127223426173.png)
+![](assets/3-卷积神经网络CNN/file-20241127223426173.png)
 
 问：为什么要选最大的那一个？
 
@@ -428,7 +428,7 @@ pooling做的事情，就是把图片变小。
 
 Convolution以后，我们会得到一张图片；做完pooling以后，我们就是把这张图片的channels不变，但是我们会把图片变得比较小一点。
 
-![](assets/1-卷积神经网络CNN/file-20241127224543890.png)
+![](assets/3-卷积神经网络CNN/file-20241127224543890.png)
 
 在上面的例子里面，本来是64个channels的图片，经过pooling以后还是64个channels。但是，本来是`4*4`的图片，我们以`2*2`为一组，pooling之后就会变成`2*2`的图片。
 
@@ -446,13 +446,13 @@ Convolution以后，我们会得到一张图片；做完pooling以后，我们�
 
 Flatten的意思就是，把这个影像里面，本来排成矩阵样子的东西，把它拉直。把所有的数值拉直，变成一个向量。
 
-![](assets/1-卷积神经网络CNN/file-20241127225458359.png)
+![](assets/3-卷积神经网络CNN/file-20241127225458359.png)
 
 再把这个向量丢进“Fully Connected Layers”里面。
 
 最终你可能还要再过一个softmax，最终得到辨识的结构。
 
-![](assets/1-卷积神经网络CNN/file-20241127225531231.png)
+![](assets/3-卷积神经网络CNN/file-20241127225531231.png)
 
 这就是一个经典的影像辨识的Network，可能有的样子。——里面有Convolution，有pooling，有flatten，最后再通过几个Fully Connected Layer，过softmax，最终得到辨识结果。
 
@@ -462,7 +462,7 @@ Flatten的意思就是，把这个影像里面，本来排成矩阵样子的东�
 
 我们说下围棋就是一个分类的问题，你的Network的输入，是棋盘上黑子和白子的位置，你的Network的输出，就是下一步应该要落子的位置。
 
-![](assets/1-卷积神经网络CNN/file-20241127230821870.png)
+![](assets/3-卷积神经网络CNN/file-20241127230821870.png)
 
 我们现在已经知道，Network的输入必须是一个向量。那怎么把棋盘表示成一个向量呢？
 
@@ -474,7 +474,7 @@ Flatten的意思就是，把这个影像里面，本来排成矩阵样子的东�
 
 这个问题完全可以用一个Fully Connected Network来解决，但是用CNN的效果更好。
 
-![](assets/1-卷积神经网络CNN/file-20241127231326831.png)
+![](assets/3-卷积神经网络CNN/file-20241127231326831.png)
 
 为什么用CNN的效果更好呢？
 
@@ -484,7 +484,7 @@ Flatten的意思就是，把这个影像里面，本来排成矩阵样子的东�
 
 在AlphaGo的原始论文里面，它告诉你说，每一个棋盘上的pixel，它是用48个channel来描述的。也就是说棋盘上的每一个位置，它都用48个数字来描述。——至于为什么是48个，这是围棋高手已经考虑好、精心设计出来的。比如说这个位置旁边是不是有颜色不一样的、……等等。这样去描述每一个位置，总共要用48个数字来描述棋盘上的每一个位置。
 
-![](assets/1-卷积神经网络CNN/file-20241127231753753.png)
+![](assets/3-卷积神经网络CNN/file-20241127231753753.png)
 
 总之，这个棋盘就是一个解析度`19*19`的图片，它的channels是48。
 
@@ -504,7 +504,7 @@ Flatten的意思就是，把这个影像里面，本来排成矩阵样子的东�
 
 下围棋也是一样的。
 
-![](assets/1-卷积神经网络CNN/file-20241127232148460.png)
+![](assets/3-卷积神经网络CNN/file-20241127232148460.png)
 
 例如上图，你不用看整个棋盘，你只需要看这一处pattern，你就能够知道发生了什么事。
 
@@ -516,7 +516,7 @@ Flatten的意思就是，把这个影像里面，本来排成矩阵样子的东�
 
 在下围棋里面显然也是一样的。
 
-![](assets/1-卷积神经网络CNN/file-20241127232434550.png)
+![](assets/3-卷积神经网络CNN/file-20241127232434550.png)
 
 所以，从上面两个观点来看，影像和下围棋有很多共同之处。
 
@@ -534,7 +534,7 @@ Flatten的意思就是，把这个影像里面，本来排成矩阵样子的东�
 
 在读了一下AlphaGo的论文之后，它有添加padding，有用Filter，有设置kernel size，有设置stride……，但读下来会发现，它压根就并没有用pooling。
 
-![](assets/1-卷积神经网络CNN/file-20241127233219858.png)
+![](assets/3-卷积神经网络CNN/file-20241127233219858.png)
 
 这给了我们一个很好的例子，就是说，类神经网络的应用之道，存乎一心。你不要看影像上面都有用pooling，就觉得pooling就是好的，你就也用pooling。实际上在下围棋的时候就是不适合用pooling。
 
@@ -546,7 +546,7 @@ CNN除了可以应用在下围棋上面。近年来也用在语音上、文字�
 
 但是，如果你真的想把CNN用在语音上，用在文字处理上，你要仔细看一下文献上的方法。看看它在语音上、文字处理上，它的Receptive Filed的设计、参数共享的设计，跟影像上是不一样的。所以你要想清楚那些，它跟影像是不一样的，而是考虑了语音跟文字的特性以后所设计的。所以你不要以为在影像上的CNN直接套到语音上就可以Work。
 
-![](assets/1-卷积神经网络CNN/file-20241127234643869.png)
+![](assets/3-卷积神经网络CNN/file-20241127234643869.png)
 
 ## 六、To learning more ...
 
@@ -556,13 +556,13 @@ CNN除了可以应用在下围棋上面。近年来也用在语音上、文字�
 
 假设今天你给CNN看的狗都是这个大小：
 
-![](assets/1-卷积神经网络CNN/file-20241127234941919.png)
+![](assets/3-卷积神经网络CNN/file-20241127234941919.png)
 
 它可以辨识说这是一只狗。
 
 当你把这个图片放大的时候：
 
-![](assets/1-卷积神经网络CNN/file-20241127235008691.png)
+![](assets/3-卷积神经网络CNN/file-20241127235008691.png)
 
 它可能就不能辨识出这个还是一只狗了。
 
@@ -582,4 +582,4 @@ CNN除了可以应用在下围棋上面。近年来也用在语音上、文字�
 
 其实是有的，有一个架构叫Spatial Transformer Layer。（这里不讲，放个链接，想看可以看）
 
-![](assets/1-卷积神经网络CNN/file-20241127235638804.png)
+![](assets/3-卷积神经网络CNN/file-20241127235638804.png)

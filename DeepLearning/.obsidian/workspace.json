@@ -4,22 +4,44 @@
     "type": "split",
     "children": [
       {
-        "id": "31d3c1730d0275ed",
+        "id": "de328db103b2fa90",
         "type": "tabs",
+        "dimension": 75.36945812807882,
         "children": [
           {
-            "id": "7780adbdf38132e4",
+            "id": "1bc2f8286db3ecd3",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "李宏毅深度学习2022/1-卷积神经网络CNN.md",
+                "file": "李宏毅深度学习2022/6-Transformer.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "1-卷积神经网络CNN"
-            }
+              "title": "6-Transformer"
+            },
+            "group": "a829349279159f89"
+          }
+        ]
+      },
+      {
+        "id": "2a0afe8d07cbd576",
+        "type": "tabs",
+        "dimension": 24.63054187192118,
+        "children": [
+          {
+            "id": "a5ceb72b358dc2de",
+            "type": "leaf",
+            "state": {
+              "type": "outline",
+              "state": {
+                "file": "李宏毅深度学习2022/6-Transformer.md"
+              },
+              "icon": "lucide-list",
+              "title": "6-Transformer 的大纲"
+            },
+            "group": "a829349279159f89"
           }
         ]
       }
@@ -139,10 +161,10 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "李宏毅深度学习2022/1-卷积神经网络CNN.md"
+                "file": "李宏毅深度学习2022/1-机器学习和深度学习基本概念、反向传播、梯度下降.md"
               },
               "icon": "lucide-list",
-              "title": "1-卷积神经网络CNN 的大纲"
+              "title": "1-机器学习和深度学习基本概念、反向传播、梯度下降 的大纲"
             }
           },
           {
@@ -162,7 +184,8 @@
       }
     ],
     "direction": "horizontal",
-    "width": 300
+    "width": 300,
+    "collapsed": true
   },
   "left-ribbon": {
     "hiddenItems": {
@@ -174,23 +197,36 @@
       "command-palette:打开命令面板": false
     }
   },
-  "active": "00ca3cad010efcfc",
+  "active": "1bc2f8286db3ecd3",
   "lastOpenFiles": [
-    "李宏毅深度学习2022/assets/1-卷积神经网络CNN/file-20241127235638804.png",
-    "李宏毅深度学习2022/assets/1-卷积神经网络CNN/file-20241127235008691.png",
-    "李宏毅深度学习2022/assets/1-卷积神经网络CNN/file-20241127234941919.png",
-    "李宏毅深度学习2022/assets/1-卷积神经网络CNN/file-20241127234643869.png",
+    "李宏毅深度学习2022/0-重点学习内容及顺序.md",
+    "未命名.md",
+    "李宏毅深度学习2022/6-Transformer.md",
+    "李宏毅深度学习2022/5-Self-attention.md",
+    "李宏毅深度学习2022/4-RNN.md",
+    "李宏毅深度学习2022/assets/4-RNN/file-20241130225212896.png",
+    "李宏毅深度学习2022/assets/4-RNN/file-20241130224806147.png",
+    "李宏毅深度学习2022/assets/4-RNN/file-20241130224632115.png",
+    "李宏毅深度学习2022/assets/4-RNN/file-20241130224348733.png",
+    "李宏毅深度学习2022/assets/4-RNN/file-20241130224150827.png",
+    "李宏毅深度学习2022/assets/4-RNN/file-20241130224027474.png",
+    "李宏毅深度学习2022/assets/4-RNN/file-20241130223206984.png",
+    "李宏毅深度学习2022/assets/4-RNN/file-20241130222738606.png",
+    "李宏毅深度学习2022/assets/4-RNN/file-20241130222159621.png",
+    "李宏毅深度学习2022/assets/4-RNN/file-20241130220228035.png",
+    "李宏毅深度学习2022/assets/4-RNN",
+    "李宏毅深度学习2022/3-卷积神经网络CNN.md",
+    "李宏毅深度学习2022/2-PyTorch简要教学.md",
+    "李宏毅深度学习2022/1-机器学习和深度学习基本概念、反向传播、梯度下降.md",
+    "李宏毅深度学习2022/assets/2-PyTorch简要教学",
+    "李宏毅深度学习2022/assets/5-Self-attention",
+    "李宏毅深度学习2022/assets/3-卷积神经网络CNN",
+    "李宏毅深度学习2022/assets/1-机器学习和深度学习基本概念、反向传播、梯度下降",
+    "李宏毅深度学习2022/assets/4-Self-attention",
+    "李宏毅深度学习2022/assets/2-卷积神经网络CNN",
+    "李宏毅深度学习2022/assets/3-Self-attention",
+    "李宏毅深度学习2022/assets/2-Self-attention",
     "李宏毅深度学习2022/assets/1-卷积神经网络CNN",
-    "李宏毅深度学习2022/assets/1-卷积神经网络CNN/file-20241127233219858.png",
-    "李宏毅深度学习2022/assets/1-卷积神经网络CNN/file-20241127232434550.png",
-    "李宏毅深度学习2022/assets/1-卷积神经网络CNN/file-20241127232148460.png",
-    "李宏毅深度学习2022/assets/1-卷积神经网络CNN/file-20241127231753753.png",
-    "李宏毅深度学习2022/assets/1-卷积神经网络CNN/file-20241127231326831.png",
-    "李宏毅深度学习2022/assets/1-卷积神经网络CNN/file-20241127230821870.png",
-    "李宏毅深度学习2022/assets/1-卷积神经网络CNN/file-20241127225531231.png",
-    "李宏毅深度学习2022/1-卷积神经网络CNN.md",
-    "李宏毅深度学习2022/assets/卷积神经网络CNN",
-    "李宏毅深度学习2022/assets",
     "【1】我的空间/论文笔记/【1-1】EmoGen/EmoGen.md",
     "【1】我的空间/论文笔记/【1-1】EmoGen/概念补充/情感差距.md",
     "【1】我的空间/论文笔记/【1-1】EmoGen/概念补充/精心设计的提示词或个性化对象.md",
@@ -202,21 +238,12 @@
     "【1】我的空间/论文笔记/【1-1】EmoGen/概念补充/仅有29%的情感准确率.md",
     "【1】我的空间/论文笔记/【1-1】EmoGen/概念补充/视觉情感通常由特定语义触发.md",
     "【1】我的空间/论文笔记/【1-1】EmoGen/概念补充/图像情感转移.md",
-    "【1】我的空间/论文笔记/【1-1】EmoGen/概念补充",
     "【1】我的空间/方法论笔记/笔记模版.md",
     "【1】我的空间/方法论笔记/笔记模版解释说明.md",
     "【1】我的空间/方法论笔记/3、如何做笔记.md",
     "【1】我的空间/方法论笔记/2、如何读论文.md",
     "【1】我的空间/方法论笔记/1、如何找论文.md",
-    "【1】我的空间/方法论笔记/assets/3、如何做笔记",
-    "【1】我的空间/方法论笔记/assets",
-    "【1】我的空间/方法论笔记",
-    "【1】我的空间/论文笔记",
-    "【1】我的空间",
-    "【1】我的空间/方法论笔记/如何读论文",
     "zoteronote/yangEmoGenEmotionalImage2024.md",
-    "模版/a-Template Note File.md",
-    "未命名.md",
-    "欢迎.md"
+    "模版/a-Template Note File.md"
   ]
 }
